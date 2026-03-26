@@ -36,6 +36,7 @@ class Reader {
         applyFilter = false;
       }
     }
+    
 
     if(start < 1){
       start = 1;
@@ -44,6 +45,9 @@ class Reader {
       end = data.length;
     }
 
+    String originUpper = originFilter.toUpperCase();
+    String destUpper = destFilter.toUpperCase();
+    
     for(int i = start; i < end; i++){
       String[] row = split(data[i], ',');
       if (row.length < 20) {
@@ -52,6 +56,7 @@ class Reader {
       
       row[4] = cleanText(row[4]);
       row[9] = cleanText(row[9]);
+      
 
       boolean matchMain = !applyFilter || row[columnIndex].toLowerCase().equals(filterValue);
 
@@ -61,14 +66,14 @@ class Reader {
       
       boolean matchOrigin = true;
       boolean matchDest = true;
-      if(!originFilter.equalsIgnoreCase("n/a")){
-        matchOrigin = row[3].equalsIgnoreCase(originFilter);
+      if(!originUpper.equals("N/A")){
+        matchOrigin = row[3].toUpperCase().equals(originUpper);
       }
-      
-      if(!destFilter.equalsIgnoreCase("n/a")){
-        matchDest = row[8].equalsIgnoreCase(destFilter);
+
+      if(!destUpper.equals("N/A")){
+        matchDest = row[8].toUpperCase().equals(destUpper);
       }
-      
+
       if(!(matchOrigin && matchDest)){
         continue;
       }
@@ -98,6 +103,35 @@ class Reader {
     } catch (Exception e){
       return 0;
     }
+  }
+  
+  float[][] buildDistanceTable(ArrayList<Flight> flights){
+
+  int size = flights.size();
+
+  int cols = (int)Math.sqrt(size);
+  int rows = (int)Math.ceil((float)size / cols);
+
+  float[][] table = new float[rows][cols];
+
+  int index = 0;
+
+  for(int i = 0; i < rows; i++){
+    for(int j = 0; j < cols; j++){
+
+      if(index < size){
+        table[i][j] = flights.get(index).distance;
+        index++;
+      }else{
+        table[i][j] = 0;
+      }
+    }
+  }
+  return table;
+}
+float[][] getHeatmapData(int start, int end, String filter, String origin, String dest){
+  ArrayList<Flight> flights = readIn(start, end, filter, origin, dest);
+  return buildDistanceTable(flights);
   }
 }
 
