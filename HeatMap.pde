@@ -194,9 +194,30 @@ class HeatMap {
     
     hoverShape.put("TN", "ellipse");
     hoverBounds.put("TN", new float[]{640, 320, 115, 30, radians (-15)});
+    
+    hoverShape.put("TX", "ellipse");
+    hoverBounds.put("TX", new float[]{430, 405, 155, 155, radians (-15)});
+    
+    hoverShape.put("UT", "rect");
+    hoverBounds.put("UT", new float[]{262, 235, 60, 75, 0});
+    
+    hoverShape.put("VT", "ellipse");
+    hoverBounds.put("VT", new float[]{840, 110, 37, 16, radians (-120)});
         
     hoverShape.put("VA", "ellipse");
     hoverBounds.put("VA", new float[]{790, 243, 60, 35, radians (-40)});
+    
+    hoverShape.put("WA", "rect");
+    hoverBounds.put("WA", new float[]{125, 65, 100, 55, 0});
+    
+    hoverShape.put("WV", "ellipse");
+    hoverBounds.put("WV", new float[]{740, 250, 65, 30, radians (-50)});
+    
+    hoverShape.put("WI", "ellipse");
+    hoverBounds.put("WI", new float[]{580, 150, 85, 55, radians (-110)});
+    
+    hoverShape.put("WY", "rect");
+    hoverBounds.put("WY", new float[]{310, 175, 95, 70, 0});
 
 
     stateImages = new HashMap<String, PImage>();
@@ -301,7 +322,7 @@ class HeatMap {
 
   void drawHoverDebug() {  // delete after finished
   noFill();
-  stroke(255, 0, 0);
+  stroke(0, 0, 0);
 
   for (String state : hoverBounds.keySet()) {
 
