@@ -90,6 +90,12 @@ class Bar {
     
     fill(255);                     
     textAlign(RIGHT, CENTER);
+    textSize(20);
+    text("NUMBER OF FLIGHTS", 10,800);
+    
+    
+    fill(255);                     
+    textAlign(RIGHT, CENTER);
     textSize(14);
     text(shortLabel, drawX - 10, drawY + drawH / 2);
 

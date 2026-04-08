@@ -143,8 +143,8 @@ class PieChart {
 
     fill(255);
     textAlign(LEFT, CENTER);
-    textSize(21);
-    text("Legend", legendStartX, legendStartY - 35);
+    textSize(24);
+    text("State/Shares", legendStartX, legendStartY - 35);
 
     int rowsPerColumn = ceil(n / 2.0);
 

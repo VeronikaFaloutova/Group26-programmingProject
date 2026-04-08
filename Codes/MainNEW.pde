@@ -130,7 +130,7 @@ void mousePressed() {
     } else if (clicked.label.equalsIgnoreCase("Table")) {
       tableScreen = new Screen(color(30,40,60));
       tableScreen.addWidget(new Widget(1005, 650, 140, 35, "Back", colourArray[0]));
-      table1 = new TextTable(10, currentFilteredFlights, 130, 250, 25, 130);
+      table1 = new TextTable(20, 200, width - 40, height - 280, currentFilteredFlights);
       currentScreen = tableScreen;
 
     } else if (clicked.label.equalsIgnoreCase("Pie Chart")) {
